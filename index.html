@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,4 +23,94 @@
         <button type="submit">Send</button>
     </form>
 </body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form to WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Contact Form</h2>
+    
+    <form onsubmit="sendToWhatsApp(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+        <button type="submit">Send to WhatsApp</button>
+    </form>
+
+    <script>
+    function sendToWhatsApp(event) {
+        event.preventDefault(); // Zuia form isitumwe kwa njia ya kawaida
+
+        let name = document.getElementById("name").value;
+        let phone = document.getElementById("phone").value;
+        let message = document.getElementById("message").value;
+
+        let whatsappNumber = "255629712678"; // Weka namba yako ya WhatsApp bila "+"
+        
+        let encodedMessage = encodeURIComponent(
+            `🚀 *New Contact Form Submission* 🚀%0A%0A` +
+            `👤 *Jina:* ${name}%0A` +
+            `📞 *Simu:* ${phone}%0A` +
+            `📝 *Ujumbe:* ${message}%0A%0A` +
+            `✅ _Tafadhali jibu haraka!_`
+        );
+
+        let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+        window.location.href = whatsappURL; // Fungua WhatsApp
+    }
+    </script>
+
+</body>
 </html>
+
