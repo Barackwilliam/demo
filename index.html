@@ -26,14 +26,12 @@
 </html> -->
 
 
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sw">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form to WhatsApp</title>
+    <title>Fomu ya Mawasiliano kwa WhatsApp</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,42 +70,43 @@
 </head>
 <body>
 
-    <h2>Contact Form</h2>
+    <h2>📩 Fomu ya Mawasiliano</h2>
     
-    <form onsubmit="sendToWhatsApp(event)">
-        <label for="name">Name:</label>
+    <form onsubmit="tumaWhatsApp(event)">
+        <label for="name">📝 Jina:</label>
         <input type="text" id="name" name="name" required><br><br>
 
-        <label for="phone">Phone:</label>
+        <label for="phone">📱 Namba ya Simu:</label>
         <input type="tel" id="phone" name="phone" required><br><br>
 
-        <label for="message">Message:</label><br>
+        <label for="message">💬 Ujumbe:</label><br>
         <textarea id="message" name="message" rows="4" required></textarea><br><br>
 
-        <button type="submit">Send to WhatsApp</button>
+        <button type="submit">📲 Tuma kwa WhatsApp</button>
     </form>
 
     <script>
-    function sendToWhatsApp(event) {
+    function tumaWhatsApp(event) {
         event.preventDefault(); // Zuia form isitumwe kwa njia ya kawaida
 
-        let name = document.getElementById("name").value;
-        let phone = document.getElementById("phone").value;
-        let message = document.getElementById("message").value;
+        let jina = document.getElementById("name").value;
+        let simu = document.getElementById("phone").value;
+        let ujumbe = document.getElementById("message").value;
 
-        let whatsappNumber = "255629712678"; // Weka namba yako ya WhatsApp bila "+"
+        let nambaWhatsApp = "255629712678"; // Namba yako ya WhatsApp
         
-        let encodedMessage = encodeURIComponent(
-            `🚀 *New Contact Form Submission* 🚀%0A%0A` +
-            `👤 *Jina:* ${name}%0A` +
-            `📞 *Simu:* ${phone}%0A` +
-            `📝 *Ujumbe:* ${message}%0A%0A` +
-            `✅ _Tafadhali jibu haraka!_`
-        );
+        let ujumbeFormatted = 
+            "🚀 *UJUMBE MPYA WA MAWASILIANO!* 🚀\n\n" +
+            "━━━━━━━━━━━━━━━━━━━━━━\n" +
+            "👤 *Jina:*  " + jina + "\n" +
+            "📞 *Simu:*  " + simu + "\n" +
+            "💬 *Ujumbe:*  " + ujumbe + "\n" +
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n" +
+            "✅ *Tafadhali jibu haraka!* 🙏";
 
-        let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        let whatsappURL = `https://wa.me/${nambaWhatsApp}?text=` + encodeURIComponent(ujumbeFormatted);
 
-        window.location.href = whatsappURL; // Fungua WhatsApp
+        window.location.href = whatsappURL; // Fungua WhatsApp na ujumbe
     }
     </script>
 
