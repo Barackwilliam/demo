@@ -25,7 +25,6 @@
 </body>
 </html> -->
 
-
 <!DOCTYPE html>
 <html lang="sw">
 <head>
@@ -72,15 +71,23 @@
 
     <h2>📩 Fomu ya Mawasiliano</h2>
     
-    <form onsubmit="tumaWhatsApp(event)">
-        <label for="name">📝 Jina:</label>
-        <input type="text" id="name" name="name" required><br><br>
+    <form class="elementor-form" onsubmit="tumaWhatsApp(event)">
+        <input type="hidden" name="post_id" value="1104"/>
+        <input type="hidden" name="form_id" value="beccf1b"/>
+        <input type="hidden" name="referer_title" value="Contact Us - Maasai Lady Adventures"/>
+        <input type="hidden" name="queried_id" value="1104"/>
 
-        <label for="phone">📱 Namba ya Simu:</label>
-        <input type="tel" id="phone" name="phone" required><br><br>
+        <label for="form-field-name">📝 Jina:</label>
+        <input type="text" name="form_fields[name]" id="form-field-name" required><br><br>
 
-        <label for="message">💬 Ujumbe:</label><br>
-        <textarea id="message" name="message" rows="4" required></textarea><br><br>
+        <label for="form-field-email">📧 Barua Pepe:</label>
+        <input type="email" name="form_fields[email]" id="form-field-email" required><br><br>
+
+        <label for="form-field-field_60736e3">📱 Namba ya Simu:</label>
+        <input type="tel" name="form_fields[field_60736e3]" id="form-field-field_60736e3" required><br><br>
+
+        <label for="form-field-message">💬 Ujumbe:</label><br>
+        <textarea name="form_fields[message]" id="form-field-message" rows="4" required></textarea><br><br>
 
         <button type="submit">📲 Tuma kwa WhatsApp</button>
     </form>
@@ -89,16 +96,18 @@
     function tumaWhatsApp(event) {
         event.preventDefault(); // Zuia form isitumwe kwa njia ya kawaida
 
-        let jina = document.getElementById("name").value;
-        let simu = document.getElementById("phone").value;
-        let ujumbe = document.getElementById("message").value;
+        let jina = document.getElementById("form-field-name").value;
+        let email = document.getElementById("form-field-email").value;
+        let simu = document.getElementById("form-field-field_60736e3").value;
+        let ujumbe = document.getElementById("form-field-message").value;
 
-        let nambaWhatsApp = "255629712678"; // Namba yako ya WhatsApp
-        
+        let nambaWhatsApp = "255629712678"; // Badilisha na namba yako
+
         let ujumbeFormatted = 
             "🚀 *UJUMBE MPYA WA MAWASILIANO!* 🚀\n\n" +
             "━━━━━━━━━━━━━━━━━━━━━━\n" +
             "👤 *Jina:*  " + jina + "\n" +
+            "📧 *Email:*  " + email + "\n" +
             "📞 *Simu:*  " + simu + "\n" +
             "💬 *Ujumbe:*  " + ujumbe + "\n" +
             "━━━━━━━━━━━━━━━━━━━━━━\n\n" +
@@ -112,4 +121,3 @@
 
 </body>
 </html>
-
